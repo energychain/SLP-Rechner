@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Standard Lastprofil Rechner - Strom</title>
+    <meta property="og:type" content="website">
+    <meta name="description" content="Mithilfe von Standardlastprofilen (SLP) werden Schätzungen über den Stromverbrauch vorgenommen. Auf Basis von zwei Zählerständen kann so der Jahresverbrauch eines Anschlusses ermittelt werden, oder bei bekanntem Jahresverbrauch der Strombezug eines Zeitraumes.">
+    <meta property="og:image" content="assets/img/slp-rechner.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="assets/img/slp-rechner_180.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/slp-rechner_16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/slp-rechner_32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/img/slp-rechner_180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/slp-rechner_192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/img/slp-rechner_512.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="assets/css/Footer-Clean-icons.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md shadow-lg">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><img src="assets/img/slp-rechner_32.png" style="margin-right: 25px;">&nbsp;Rechner für Standard Lastprofile (Strom, Deutschland)</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav"></ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="margin-top: 30px;">
+        <h1>Rechner für Standard Lastprofile (Strom)</h1>
+        <p>Mit Hilfe der Standardlastprofile ist es möglich auf Basis des Jahresverbrauchs und definierter, typischer Verbrauchsgruppen eine Schätzung des Stromverbrauchs eines Zeitraumes vorzunehmen. Alternativ kann bei bekanntem Verbrauch eines Zeitraumes der Jahresverbrauch ermittelt werden.&nbsp; &nbsp;</p>
+        <form id="uc1_Periodenverbrauch">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Anwendungsfall: Ermittlung des Verbrauchs eines Zeitraums</h2>
+                </div>
+                <div class="card-body">
+                    <div class="input-group" style="margin-top: 15px;"><span class="input-group-text col-6">Jahresverbrauch&nbsp;</span><input class="form-control" type="number" id="ja" required="" min="1" max="100000" value="2400" name="ja"><span class="input-group-text">kWh</span></div><small class="form-text text-start">Angabe in Kilo-Watt-Stunden (kWh)</small>
+                    <div class="input-group" style="margin-top: 15px;"><span class="input-group-text col-6">Zeitraum Anfang</span><input class="form-control" id="von" type="date" required="" name="von"></div><small class="form-text text-start">Ab diesem Zeitpunkt wird der Verbrauch bestimmt</small>
+                    <div class="input-group" style="margin-top: 15px;"><span class="input-group-text col-6">Zeitraum Ende</span><input class="form-control" id="bis" type="date" required="" name="bis"></div><small class="form-text text-start">Bis zu diesem Zeitpunkt wird der Verbrauch bestimmt</small>
+                </div>
+                <div class="card-footer text-end"><button class="btn btn-primary" type="submit">Berechnen<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-window-dock" style="margin-left: 5px;">
+                            <path fill-rule="evenodd" d="M15 5H1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5zm0-1H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v1zm1-1a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3z"></path>
+                            <path d="M3 11.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm4 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm4 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
+                        </svg></button></div>
+            </div>
+        </form>
+        <form id="uc2_Jahresverbrauch" style="margin-top: 25px;">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Anwendungsfall: Jahresverbrauch aus Periodenverbrauch</h2>
+                </div>
+                <div class="card-body">
+                    <div class="input-group" style="margin-top: 15px;"><span class="input-group-text col-6">Datum der ersten Ablesung</span><input class="form-control" id="vonJA" type="date" required="" name="von"></div><small class="form-text text-start">Anfangszeitpunkt des Periodenverbrauchs (1. Ablesung)</small>
+                    <div class="input-group" style="margin-top: 15px;"><span class="input-group-text col-6">Zählerstand bei der ersten Ablesung</span><input class="form-control" type="number" id="zaVon" value="0" step="1" min="0"><span class="input-group-text">kWh</span></div><small class="form-text text-start">Anfangszählerstand für die Ermittlung des Periodenverbrauchs</small>
+                    <div class="input-group" style="margin-top: 15px;"><span class="input-group-text col-6">Datum der zweiten Ablesung</span><input class="form-control" id="bisJA" type="date" required="" name="bis"></div><small class="form-text text-start">Ende des Periodenverbrauchs (2. Ablesung)</small>
+                    <div class="input-group" style="margin-top: 15px;"><span class="input-group-text col-6">Zählerstand bei der zweiten Ablesung</span><input class="form-control" type="number" id="zaBis" value="1" step="1" min="1"><span class="input-group-text">kWh</span></div><small class="form-text text-start">Endzählerstand für die Ermittlung des Periodenverbrauchs</small>
+                    <div class="input-group" style="margin-top: 15px;"><span class="input-group-text col-6">Periodenverbrauch</span><input class="form-control" type="number" id="pa" required="" min="1" max="100000" value="1" name="ja"><span class="input-group-text">kWh</span></div><small class="form-text text-start">Angabe in Kilo-Watt-Stunden (kWh) (Differenz aus 1. und 2. Ablesung)</small>
+                </div>
+                <div class="card-footer text-end"><button class="btn btn-primary" type="submit">Berechnen<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-window-dock" style="margin-left: 5px;">
+                            <path fill-rule="evenodd" d="M15 5H1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5zm0-1H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v1zm1-1a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3z"></path>
+                            <path d="M3 11.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm4 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm4 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
+                        </svg></button></div>
+            </div>
+        </form>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalUC1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Perioden Verbrauch</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="resultUC1" style="margin-top: 15px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-stopwatch-fill fs-1 text-primary">
+                            <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07A7.001 7.001 0 0 0 8 16a7 7 0 0 0 5.29-11.584.531.531 0 0 0 .013-.012l.354-.354.353.354a.5.5 0 1 0 .707-.707l-1.414-1.415a.5.5 0 1 0-.707.707l.354.354-.354.354a.717.717 0 0 0-.012.012A6.973 6.973 0 0 0 9 2.071V1h.5a.5.5 0 0 0 0-1h-3zm2 5.6V9a.5.5 0 0 1-.5.5H4.5a.5.5 0 0 1 0-1h3V5.6a.5.5 0 1 1 1 0z"></path>
+                        </svg><span>Berechnung läuft....</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center py-4" style="margin-top: 50px;">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col">
+                    <p class="text-muted my-2">© 2022 STROMDAO GmbH&nbsp;</p>
+                </div>
+                <div class="col"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_top"><img src="https://static.corrently.cloud/cc_by_nc_sa.png"></a></div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a class="link-secondary" href="https://stromdao.de/impressum">Impressum</a></li>
+                        <li class="list-inline-item"><a class="link-secondary" href="https://rapidapi.com/stromdao-stromdao-default/api/standardlastprofil-rechner">API</a></li>
+                        <li class="list-inline-item"><a class="link-secondary" href="https://stromdao.de/kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
